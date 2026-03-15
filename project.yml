@@ -1,0 +1,44 @@
+name: Shunkoku
+options:
+  bundleIdPrefix: com.shunkoku
+  deploymentTarget:
+    iOS: "26.0"
+  xcodeVersion: "26.0"
+  createIntermediateGroups: true
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    IPHONEOS_DEPLOYMENT_TARGET: "26.0"
+
+targets:
+  Shunkoku:
+    type: application
+    platform: iOS
+    sources:
+      - Shunkoku
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: true
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: true
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: true
+        INFOPLIST_KEY_UILaunchScreen_Generation: true
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait"
+        INFOPLIST_KEY_CFBundleDisplayName: "瞬刻"
+        INFOPLIST_KEY_NSPhotoLibraryUsageDescription: "スクリーンショットを読み取って経費を自動登録します"
+        SWIFT_STRICT_CONCURRENCY: complete
+        PRODUCT_BUNDLE_IDENTIFIER: com.shunkoku.app
+    entitlements:
+      path: Shunkoku/Shunkoku.entitlements
+
+  ShunkokuTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - ShunkokuTests
+    dependencies:
+      - target: Shunkoku
+    settings:
+      base:
+        SWIFT_VERSION: "6.0"
