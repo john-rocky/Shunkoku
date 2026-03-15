@@ -1,5 +1,4 @@
 import Foundation
-import FoundationModels
 
 /// AI分類リクエスト用の構造体
 struct TransactionClassificationRequest: Sendable {
@@ -9,7 +8,11 @@ struct TransactionClassificationRequest: Sendable {
     let sourceType: String
 }
 
+#if canImport(FoundationModels)
+import FoundationModels
+
 /// AI分類結果 — Foundation Models の @Generable で構造化出力
+@available(iOS 26.0, *)
 @Generable
 struct TransactionClassification {
     /// 勘定科目（日本語）
@@ -26,8 +29,10 @@ struct TransactionClassification {
 }
 
 /// バッチ分類用 — 複数取引を一度に分類
+@available(iOS 26.0, *)
 @Generable
 struct BatchClassificationResult {
     @Guide(description: "各取引の分類結果リスト")
     var classifications: [TransactionClassification]
 }
+#endif

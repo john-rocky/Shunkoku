@@ -1,6 +1,8 @@
 import Foundation
-import FoundationModels
 import SwiftData
+#if canImport(FoundationModels)
+import FoundationModels
+#endif
 
 /// 取引の勘定科目を分類するサービス
 /// Foundation Models → キーワードベースのフォールバック
@@ -84,6 +86,9 @@ final class ClassificationService {
     // MARK: - Foundation Models Classification
 
     private func classifyWithAI(_ request: TransactionClassificationRequest) async -> (category: AccountCategory, taxRate: TaxRate, reason: String)? {
+        #if canImport(FoundationModels)
+        guard #available(iOS 26.0, *) else { return nil }
+
         do {
             let session = LanguageModelSession {
                 """
@@ -129,6 +134,9 @@ final class ClassificationService {
         } catch {
             return nil
         }
+        #else
+        return nil
+        #endif
     }
 
     // MARK: - Keyword Fallback

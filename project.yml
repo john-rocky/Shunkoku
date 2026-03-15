@@ -28,7 +28,7 @@ targets:
         INFOPLIST_KEY_CFBundleDisplayName: "瞬刻"
         INFOPLIST_KEY_NSPhotoLibraryUsageDescription: "スクリーンショットを読み取って経費を自動登録します"
         SWIFT_STRICT_CONCURRENCY: complete
-        PRODUCT_BUNDLE_IDENTIFIER: com.shunkoku.app
+        PRODUCT_BUNDLE_IDENTIFIER: com.daisukemajima.shuntoku
     entitlements:
       path: Shunkoku/Shunkoku.entitlements
 

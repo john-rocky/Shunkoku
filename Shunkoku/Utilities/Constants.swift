@@ -4,7 +4,7 @@ enum Constants {
     /// アプリ情報
     enum App {
         static let name = "瞬刻"
-        static let bundleID = "com.shunkoku.app"
+        static let bundleID = "com.daisukemajima.shuntoku"
     }
 
     /// OCR設定
